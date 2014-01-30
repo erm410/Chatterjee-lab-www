@@ -1,35 +1,46 @@
-require(["dojo/parser", "dojo/on", "dijit/Dialog", "dojo/dom", "dijit/registry", "dojo/domReady!", "dijit/layout/TabContainer", "dijit/layout/ContentPane"], 
-		function(parser, on, Dialog, dom, registry) {
+require(["dojo/parser", "dojo/on", "dijit/Dialog", "dojo/dom", "dijit/registry", "dojo/query", "dojo/domReady!", 
+         "dijit/layout/TabContainer", "dijit/layout/ContentPane"], 
+		function(parser, on, Dialog, dom, registry, query) {
 
 	try {
-		var bio;
+		var dialog;
 
-		parser.parse().then(setGroupOnload);
+		parser.parse().then(onloadHandlers);
 
-		function setGroupOnload() {
-			registry.byId("group").on("load", setBioEvents);
+		function onloadHandlers() {
+			registry.byId("group").on("load", setBioClickHandlers);
+			registry.byId("protocols").on("load", setProtocolClickHandlers);
 		}
 
-		function setBioEvents() {
+		function setBioClickHandlers() {
 			on(dom.byId("amanda"), "click", bioClickHander);
+		}
+		
+		function setProtocolClickHandlers() {
+			query("#protocolList a").on("click", protocolListHandler);
 		}
 
 		function bioClickHander(e) {
 			e.preventDefault();
-			showBio(this.id);
+			showDialog("bios/" + this.id + ".html");
 		}
 
-		function showBio(person) {
-			if (!person) {
+		function protocolListHandler(e) {
+			e.preventDefault(e);
+			showDialog("protocols/" + this.id + ".html");
+		}
+		
+		function showDialog(href) {
+			if (!href) {
 				return;
 			}
-			bio = new Dialog({
-				href: "bios/" + person + ".html"
+			dialog = new Dialog({
+				href: href
 			});
-			bio.on("close", destroyBio);
-			bio.show();
+			dialog.on("close", destroyBio);
+			dialog.show();
 		}
-
+		
 		function destroyBio() {
 			this.destroyRecursively();
 		}
