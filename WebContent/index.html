@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		
+		<link rel="stylesheet" href="dijit/themes/claro/claro.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		
+		<title>Abhishek Chatterjee's Lab</title>
+	</head>
+	<body class="claro">
+	
+		<div id="header">
+			<h1 id="headerText">Hello World</h1>
+			<img alt="Boston College Chemistry" src="images/bcchem.jpg" />
+		</div>
+		
+		<div id="contentTabs" data-dojo-type="dijit/layout/TabContainer" >
+		
+			<div id="home" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Home', href: 'tabs/home.html'" ></div>
+			<div id="group" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Meet The Group', href: 'tabs/group.html'" ></div>
+			<div id="pubs" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'Recent Publications', href: 'tabs/publications.html'" ></div>
+			<div id="news" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="title: 'News', href: 'tabs/news.html'" ></div>
+			
+		</div>
+		<script src="dojo/dojo.js" data-dojo-config="async: true"></script>
+		<script src="index.js"></script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
+}
+
+#header {
+	color: red;
+	height: 100px;
+}
+
+#headerText {
+	display: inline-block;
+	padding: 20px;
+}
+
+#header img {
+	vertical-align: middle;
+}
+
+#contentTabs {
+	position: absolute;
+	top: 100px;
+	bottom: 0px;
+	width: 100%;
+}
